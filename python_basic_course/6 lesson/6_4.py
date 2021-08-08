@@ -1,13 +1,13 @@
 print('Задача 4. Календари')
 
 calendar = []
-month = int(input('Введите число: '))
+month = None
 while month != 0:
+  month = int(input('Введите число: '))
   if month % 2 == 0:
     calendar.append(month)
-    month = int(input('Введите число: '))
   else:
-    month = int(input('Введите число: '))
+    continue
 print(calendar)
 # Ваня увлекается историей, а в особенности календарями.
 # Он изучает календари разных времён, эпох и народностей. 

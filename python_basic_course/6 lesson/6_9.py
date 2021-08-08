@@ -1,16 +1,17 @@
 print('Задача 9. Игра «Угадай число»')
 
-mystery_num = int(input('Угадайте загаданное число: '))
 attempts = 1
+mystery_num = 0
 while mystery_num != 7:
+  mystery_num = int(input('Угадайте загаданное число: '))
   if mystery_num > 7:
     attempts += 1
     print('Число больше, чем нужно. Попробуйте ещё раз!')
-    mystery_num = int(input('Угадайте загаданное число: '))
   elif mystery_num < 7:
     attempts += 1
     print('Число меньше, чем нужно. Попробуйте ещё раз!')
-    mystery_num = int(input('Угадайте загаданное число: '))
+  else:
+    break
 
 print('Вы угадали! Число попыток: {}'.format(attempts))
 # В одном из домашних заданий мы делали задачу, 
