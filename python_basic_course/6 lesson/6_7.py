@@ -2,7 +2,7 @@ print('Задача 7. Обычный день на работе')
 
 work_time = 1
 sum_tasks = 0
-shop = []
+shop = 0
 
 print('Начался 8-часовой рабочий день')
 while work_time <= 8:
@@ -11,10 +11,10 @@ while work_time <= 8:
   sum_tasks += tasks
   work_time += 1
   wifes_call = input('Звонит жена. Взять трубку? (1-да, 0-нет) ')
-  shop.append(wifes_call)
+  shop += wifes_call
   
 print(sum_tasks)
-if '1' in shop:
+if shop > 0:
   print('Нужно зайти в магазин')
 
 # Максим программирует целый день на работе и вечером идёт домой.

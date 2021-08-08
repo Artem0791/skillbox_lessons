@@ -2,17 +2,16 @@ print('Задача 6. Поставьте оценку!')
 
 negative_review = []
 postitve_review = []
-
-grade = int(input('Введите оценку: '))
+grade = None
 
 while grade != 0:
+  grade = int(input('Введите оценку: '))
   if grade > 0:
     postitve_review.append(grade)
-    grade = int(input('Введите оценку: '))
-  else:
+  elif grade < 0:
     negative_review.append(grade)
-    grade = int(input('Введите оценку: '))
-
+  else:
+    break
 print('Кол-во положительных чисел: {}'.format(len(postitve_review)))
 print('Кол-во отрицательных чисел: {}'.format(len(negative_review)))
 # Вася выложил своё новое приложение на платформу для начинающих разработчиков,

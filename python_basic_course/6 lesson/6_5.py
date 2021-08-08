@@ -5,12 +5,10 @@ last_nums = int(input('Введите последние 3 цифры: '))
 sum_first = 0
 sum_last = 0
 
-while first_nums !=0:
+while first_nums and last_nums !=0:
   sum_first = sum_first + first_nums % 10
-  first_nums = first_nums // 10
-
-while last_nums != 0:
   sum_last = sum_last + last_nums % 10
+  first_nums = first_nums // 10
   last_nums = last_nums // 10
   
 if sum_first == sum_last:
