@@ -4,15 +4,20 @@ def factorial(n):
         fct *= s
     return fct
 
+def square(num, sq):
+    sqnum = 1
+    for i in range(sq):
+        sqnum *= num
+    return sqnum
 
 def f(n, x):
-    return (-1**n)*((x)**(2*n))/(2*(factorial(n)))
+    return (square(-1, n))*(square(x, (2*n)))/(factorial(2*n))
 
 
 def row_sum():
     last_x = 1
     sum_x = 0
-    n = 1
+    n = 0
     while abs(last_x) > precision:
         last_x = f(n, x)
         sum_x += last_x
