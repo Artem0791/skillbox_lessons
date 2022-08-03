@@ -1,21 +1,27 @@
-def f(n):
-    return (1 / (n ** n)) * ((-1) ** (n - 1))
+def factorial(n):
+    fct = 1
+    for s in range(1, n+1):
+        fct *= s
+    return fct
 
 
-def row_sum(x):
+def f(n, x):
+    return (-1**n)*((x)**(2*n))/(2*(factorial(n)))
+
+
+def row_sum():
+    last_x = 1
     sum_x = 0
-    prev_s = 1000
     n = 1
-    while abs(prev_s - sum_x) > precision:
-        prev_s = sum_x
-        sum_x += f(n)
+    while abs(last_x) > precision:
+        last_x = f(n, x)
+        sum_x += last_x
         n += 1
     return sum_x
 
-
-x = float(input('Введите x: '))
 precision = float(input('Введите точность: '))
-print('Сумма ряда =  {}'.format(row_sum(x)))
+x = float(input('Введите x: '))
+print('Сумма ряда =  {}'.format(row_sum()))
 
 # Пользователь вводит действительное число
 # "х" и точность "precision".
