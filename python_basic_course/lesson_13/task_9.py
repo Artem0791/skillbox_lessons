@@ -1,50 +1,36 @@
 print('Задача 9. Аннуитетный платёж')
 
 
-S = float(input('Введите сумму кредита: '))
-n = int(input('На сколько лет выдан? '))
-i = float(input('Сколько процентов годовых? ')) / 100
+summ = float(input('Введите сумму кредита: '))
+year = int(input('На сколько лет выдан? '))
+percent = float(input('Сколько процентов годовых? '))
+def payment(summ, year, percent):
+    percent = percent / 100
+    k = (percent * (1 + percent) ** year) / ((1 + percent) ** year - 1)
+    a_payment = round(k * summ, 2)
+    return a_payment
+def period_printout(summ, percent, a_payment, period):
+    for i in range(1, period + 1):
+        paid_percent = summ * percent / 100
+        paid_credit = a_payment - paid_percent
+        print('\nПериод', i)
+        print('\nОстаток долга на начало периода:', summ)
+        print('Выплачено процентов:', paid_percent)
+        print('Выплачено тела кредита:', paid_credit)
+        summ -= paid_credit
+    else:
+        print('\nОстаток долга:', summ)
+    return summ
 
+a_payment = payment(summ, year, percent)
+new_summ = period_printout(summ, percent, a_payment, 3)
 
-def payment(S, n, i):
-    period = 0
-    for _ in range(3):
-        K = (i * ((1 + i) ** n)) / (((1 + i) ** n) - 1)
-        A = S * K
-        period += 1
-        print('\nПериод: {}\n'.format(period))
-        K = (i * ((1 + i) ** n)) / (((1 + i) ** n) - 1)
-        A = S * K
-        procent = A * i
-        cr_body = A - (A * i)
-        print('Остаток долга на начало периода: {}'.format(S))
-        print('Выплачено процентов: {}'.format(procent))
-        print('Выплачено тела кредита: {}'.format(cr_body))
-        S -= A
-        n -= 1
-    print('\nОстаток долга: {}'.format(S))
-    print('\n=================================================\n')
-    plus_years = int(input('На сколько лет продляется договор? '))
-    i = float(input('Увеличение ставки до: ')) / 100
-    n += plus_years
-    for _ in range(n):
-        K = (i * ((1 + i) ** n)) / (((1 + i) ** n) - 1)
-        A = S * K
-        period += 1
-        print('\nПериод: {}\n'.format(period))
-        K = (i * ((1 + i) ** n)) / (((1 + i) ** n) - 1)
-        A = S * K
-        procent = A * i
-        cr_body = A - (A * i)
-        print('Остаток долга на начало периода: {}'.format(S))
-        print('Выплачено процентов: {}'.format(procent))
-        print('Выплачено тела кредита: {}'.format(cr_body))
-        S -= A
-        n -= 1
-    print('Остаток долга: {}'.format(S))
+new_year = int(input('\nНа сколько лет продляется договор? '))
+new_percent = float(input('Увеличение ставки до: '))
+new_year = new_year + year - 3
 
-
-payment(S, n, i)
+a_payment = payment(new_summ, new_year, new_percent)
+new_summ = period_printout(new_summ, new_percent, a_payment, new_year)
 
 # Кредит в сумме S млн руб.,
 # выданный на n лет под i% годовых,
